@@ -1,0 +1,27 @@
+f="ATCAATGATCAACGTAAGCTTCTAAGCATGATCAAGGTGCTCACACAGTTTATCCACAACCTGAGTGGATGACATCAAGATAGGTCGTTGTATCTCCTTCCTCTCGTACTCTCATGACCACGGAAAGATGATCAAGAGAGGATGATTTCTTGGCCATATCGCAATGAATACTTGTGACTTGTGCTTCCAATTGACATCTTCAGCGCCATATTGCGCTGGCCAAGGTGACGGAGCGGGATTACGAAAGCATGATCATGGCTGTTGTTCTGTTTATCTTGTTTTGACTGAGACTTGTTAGGATAGACGGTTTTTCATCACTGACTAGCCAAAGCCTTACTCTGCCTGACATCGACCGTAAATTGATAATGAATTTACATGCTTCCGCGACGATTTACCTCTTGATCATCGATCCGATTGAAGATCTTCAATTGTTAATTCTCTTGCCTCGACTCATAGCCATGATGAGCTCTTGATCATGTTTCCTTAACCCTCTATTTTTTACGGAAGAATGATCAAGCTGCTGCTCTTGATCATCGTTTC"
+
+print(len(f))
+
+from collections import Counter
+term = 'TGATCA'
+c = Counter([f[i : i + len(term)] for i in range(len(f))])
+print(c[term])
+
+
+text=input("enter text:")
+k=int(input("enter the value of k:"))
+all_substr=[text[i:i+k] for i in range(len(text)-(k-1))]
+unique_str=[]
+for i in all_substr:
+    if i not in unique_str:
+        unique_str.append(i)
+k_mer=[]
+max=0
+for i in unique_str:
+    c=all_substr.count(i)
+    if c>=max:
+        max=c
+for i in unique_str:
+    if (all_substr.count(i)==max):
+        k_mer.append(i)
+print(k_mer)
